@@ -1,0 +1,61 @@
+<div class="container mt-4" >
+    <div class="card">
+            <h1>Product Catelog</h1>
+    
+    <form>
+        
+        <div class="form-group">
+            <label>Product ID</label>
+            <input type="text" [(ngModel)]="productID" [ngModelOptions]="{standalone: true}" class="form-control" id="productID" placeholder="Enter Product ID">
+          </div>
+
+        <div class="form-group">
+          <label>Product Name</label>
+          <input type="text" [(ngModel)]="productname" [ngModelOptions]="{standalone: true}" class="form-control" id="productname" placeholder="Enter Name">
+        </div>
+    
+        <div class="form-group">
+          <label>Category</label>
+          <input type="text" [(ngModel)]="category" [ngModelOptions]="{standalone: true}" class="form-control" id="category" placeholder="Enter category">
+        </div>
+ 
+        <div class="form-group">
+            <label>CategoryID</label>
+            <input type="text" [(ngModel)]="categoryid" [ngModelOptions]="{standalone: true}" class="form-control" id="categoryid" placeholder="Enter ID">
+          </div>
+ 
+ 
+    
+        <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Save</button>
+      
+      </form>
+    </div>
+    
+  
+    
+        <div class="container mt-4" >
+            <h1>Products</h1>
+        <table class="table">
+            <thead>
+             <h1 *ngIf="!isResultLoaded">Loading.................</h1>      
+            <tr>
+                <th scope="col">productID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Category</th>  
+                <th scope="col">CategoryID</th>  
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ProductItem of ProductArray">
+                <td>{{ProductItem.productID  }}</td>
+                <td>{{ProductItem.productname }}</td>
+                <td>{{ProductItem.category }}</td>
+                <td>{{ProductItem.categoryid }}</td>
+                <td>
+                  <button type="button" class="btn btn-success" (click)="setUpdate(ProductItem)">Edit</button>
+                  <button type="button" class="btn btn-danger" (click)="setDelete(ProductItem)">Delete</button>            
+                </td>
+              </tr>          
+            </tbody>
+          </table>
+        </div>
